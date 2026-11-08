@@ -1,16 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Antools — discover tools for designers and developers.">
+  <title>Antools — Tools for Designers & Developers</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="app.js" defer></script>
 </head>
-
 <body>
-    
-</body>
+  <a class="skip-link" href="#tools">Skip to tools</a>
+  <header class="header container">
+    <a class="header__brand" href="#home" aria-label="Antools home"><img src="assets/logo.svg" width="38" height="38" alt=""><span>antools.</span></a>
+    <button class="header__menu" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">☰</button>
+    <nav class="header__nav" id="navigation" aria-label="Main navigation">
+      <a class="header__link" href="#home">Home</a>
+      <div class="header__category">
+        <button class="header__link header__category-toggle" type="button" aria-expanded="false" aria-controls="categories">Categories <span aria-hidden="true">⌄</span></button>
+        <div class="header__dropdown" id="categories" hidden>
+          <button type="button" data-category="all">All tools</button>
+          <button type="button" data-category="design">Design</button>
+          <button type="button" data-category="development">Development</button>
+          <button type="button" data-category="productivity">Productivity</button>
+        </div>
+      </div>
+      <button class="header__link" type="button" data-open-collection>My Collections</button>
+      <a class="header__link" href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer">Blog</a>
+    </nav>
+    <div class="header__account"><button class="header__login" type="button" data-profile="login">Login</button><button class="button header__signup" type="button" data-profile="signup">Sign Up</button></div>
+  </header>
 
+  <main id="home">
+    <section class="hero">
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <h1 class="hero__title">Awesome tools for<br>Designer &amp; Developer<span>.</span></h1>
+          <p class="hero__description">Antool is a web collection of information on paid or<br class="hero__break"> free Design and Development tools</p>
+          <form class="search" role="search">
+            <svg class="search__icon" width="24" height="24" aria-hidden="true"><use href="assets/icons.svg#search"></use></svg>
+            <label class="visually-hidden" for="tool-search">Find a tool</label>
+            <input class="search__input" id="tool-search" type="search" placeholder="find more than 430+ tools..." autocomplete="off">
+            <button class="button search__button" type="submit">Search</button>
+          </form>
+          <div class="hero__socials" aria-label="Social networks">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="24" height="24"><use href="assets/icons.svg#facebook"></use></svg></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24"><use href="assets/icons.svg#instagram"></use></svg></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg width="24" height="24"><use href="assets/icons.svg#twitter"></use></svg></a>
+          </div>
+        </div>
+        <img class="hero__illustration" src="assets/hero.svg" alt="Abstract illustration of code editor windows" width="590" height="500">
+      </div>
+    </section>
+
+    <section class="tools container" id="tools" aria-labelledby="tools-title">
+      <h2 class="tools__title" id="tools-title">Most Popular Tools</h2>
+      <p class="tools__description">Tools for the best Designers and Developers<br>most popularly used in the world</p>
+      <div class="tools__filter" hidden><span class="tools__filter-label"></span><button type="button" class="tools__reset">Show all tools ×</button></div>
+      <div class="tools__grid" id="tool-grid"></div>
+      <p class="tools__empty" hidden>No tools found. Try another name or category.</p>
+      <button class="tools__more" type="button">Load more</button>
+    </section>
+
+    <section class="brands container" aria-labelledby="brands-title">
+      <div class="brands__panel">
+        <h2 class="brands__title" id="brands-title">Trusted more than 150+ brand</h2>
+        <div class="brands__list">
+          <a class="brands__link" href="https://www.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Microsoft"><span class="brands__microsoft" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Microsoft</span></a>
+          <a class="brands__link brands__link_google" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Google</a>
+          <a class="brands__link brands__link_slack" href="https://slack.com/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✣</span> slack</a>
+          <a class="brands__link brands__link_wordpress" href="https://wordpress.org/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">Ⓦ</span> WordPress</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="dialog" id="collection-dialog" aria-labelledby="collection-title">
+    <button class="dialog__close" type="button" data-close aria-label="Close collection">×</button>
+    <h2 class="dialog__title" id="collection-title">My Collections</h2>
+    <p class="dialog__description">Keep your favorite tools close at hand.</p>
+    <div class="dialog__collection"></div>
+  </dialog>
+
+  <dialog class="dialog" id="profile-dialog" aria-labelledby="profile-title">
+    <button class="dialog__close" type="button" data-close aria-label="Close profile">×</button>
+    <h2 class="dialog__title" id="profile-title">Welcome to Antools</h2>
+    <p class="dialog__description">Personalize your collection on this device. Your name stays in this browser.</p>
+    <form class="profile">
+      <label class="profile__label" for="profile-name">Your name</label>
+      <input class="profile__input" id="profile-name" name="name" autocomplete="given-name" required maxlength="60">
+      <button class="button profile__submit" type="submit">Continue</button>
+    </form>
+  </dialog>
+  <p class="toast" role="status" aria-live="polite"></p>
+</body>
 </html>
